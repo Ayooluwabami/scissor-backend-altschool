@@ -1,0 +1,39 @@
+scissor/
+├── dist/                   # Compiled output (if any)
+├── node_modules/           # Node.js modules
+├── src/                    # Source files
+│   ├── controllers/        # Controller files
+│   │   ├── url.controller.ts
+│   ├── middleware/         # Middleware files
+│   │   ├── authenticate.ts
+│   │   ├── authMiddleware.ts
+│   ├── models/             # Mongoose models
+│   │   ├── url.model.ts
+│   ├── routes/             # Route definitions
+│   │   ├── url.routes.ts
+│   ├── services/           # Service layer
+│   │   ├── url.service.ts
+│   ├── utils/              # Utility functions and helpers
+│   │   ├── cache.ts
+│   │   ├── database.ts
+│   │   ├── jwt.ts
+│   │   ├── rateLimiter.ts
+│   │   ├── redis.ts
+│   │   ├── validateUrl.ts
+│   ├── app.ts              # Main Express app
+│   ├── server.ts           # Server entry point
+├── types/                  # Type declarations
+│   ├── express.d.ts
+├── tests/                  # Test files
+│   ├── unit/               # Unit tests
+│   │   ├── url.controller.test.ts
+│   ├── integration/        # Integration tests
+│   │   ├── url.routes.test.ts
+├── .env                    # Environment variables
+├── .gitignore              # Git ignore file
+├── jest.config.js          # Jest configuration
+├── openapi.yaml            # OpenAPI documentation
+├── package.json            # Package configuration
+├── package-lock.json       # Lock file for package dependencies
+├── tsconfig.json           # TypeScript configuration
+├── project_structure.txt   # Project structure documentation
