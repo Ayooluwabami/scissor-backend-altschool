@@ -15,7 +15,7 @@
     "url",
     "shortener"
   ],
-  "author": "Your Name",
+  "author": "Ayobami Esther EKUNDAYO",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.3",
