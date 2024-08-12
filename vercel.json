@@ -7,8 +7,7 @@
       "config": {
         "includeFiles": [
           "src/**/*",
-          "tsconfig.json",
-          ".env"
+          "tsconfig.json"
         ]
       }
     }
