@@ -1,11 +1,13 @@
 module.exports = {
-  roots: ['<rootDir>/tests'],
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  moduleFileExtensions: ['js', 'json', 'ts'],
+  rootDir: 'test',
+  testRegex: '.*\\.spec\\.ts$',
+  coverageDirectory: '../coverage',
+  collectCoverageFrom: ['src/**/*.ts'],
   transform: {
-    '^.+\\.tsx?$': 'ts-jest'
+    '^.+\\.(t|j)s$': 'ts-jest',
   },
-  testRegex: '.*\\.test\\.ts$',
-  moduleFileExtensions: ['ts', 'js', 'json'],
-  collectCoverage: true,
-  coverageDirectory: 'coverage',
-  testEnvironment: 'node'
+  transformIgnorePatterns: ['node_modules/(?!(nestjs-module|some-other-module)/)'],
 };

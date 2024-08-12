@@ -2,32 +2,39 @@ scissor/
 ├── dist/                   # Compiled output 
 ├── node_modules/           # Node.js modules
 ├── src/                    # Source files
-│   ├── controllers/        # Controller files
-│   │   ├── url.controller.ts
-│   ├── middleware/         # Middleware files
-│   │   ├── authenticate.ts
-│   │   ├── rateLimiter.ts
-│   ├── models/             # Mongoose models
-│   │   ├── url.model.ts
-│   ├── routes/             # Route definitions
-│   │   ├── url.routes.ts
-│   ├── services/           # Service layer
-│   │   ├── url.service.ts
-│   ├── utils/              # Utility functions and helpers
-│   │   ├── cache.ts
-│   │   ├── database.ts
-│   │   ├── jwt.ts
-│   │   ├── rateLimiter.ts
-│   │   ├── validateUrl.ts
-├── types/                  # Type declarations
-│   ├── express.d.ts
-├── tests/                  # Test files
+│   ├── modules/            # Feature modules
+│   │   ├── url/   
+│   │   │   ├── url.controller.ts
+│   │   │   ├── url.module.ts
+│   │   │   ├── url.model.ts
+│   │   │   ├── url.service.ts
+│   ├── common/             # Shared components and utilities
+│   │   ├── filters/        # Global exception filters
+│   │   │   ├── http-exception.filter.ts
+│   │   ├── interceptors/   # Global interceptors
+│   │   │   ├── logging.interceptor.ts
+│   │   ├── guards/         # Global guards
+│   │   │   ├── auth.guard.ts
+│   │   ├── middleware/     # Middleware
+│   │   │   ├── rate-limiter.middleware.ts
+│   │   ├── pipes/          # Pipes
+│   │   │   ├── validation.pipe.ts
+│   │   ├── services/          # Pipes
+│   │   │   ├── jwt.service.ts
+│   │   ├── utils/          # Utility functions and helpers
+│   │   │   ├── generate-qrcode.ts
+│   │   │   ├── validate-url.ts
+│   ├── config/             # Configuration files
+│   │   ├── database.config.ts
+│   ├── app.controller.ts
+│   ├── app.module.ts
+│   ├── app.service.ts
+│   ├── main.ts
+├── test/                   # Test files
+│   ├── e2e/                # End-to-end tests
+│   │   ├── app.e2e-spec.ts
 │   ├── unit/               # Unit tests
-│   │   ├── url.controller.test.ts
-│   ├── integration/        # Integration tests
-│   │   ├── url.routes.test.ts
-├── app.ts              # Main Express app
-├── index.ts           # Server entry point
+│   │   ├── url.service.spec.ts
 ├── .env                    # Environment variables
 ├── .gitignore              # Git ignore file
 ├── jest.config.js          # Jest configuration
@@ -35,7 +42,7 @@ scissor/
 ├── package.json            # Package configuration
 ├── package-lock.json       # Lock file for package dependencies
 ├── tsconfig.json           # TypeScript configuration
-├── vercel.json             # Vercel deployment configuration
 ├── README.md               # Project documentation
+├── vercel.json             # Vercel deployment configuration
 ├── generateJwtSecret.js    # Script for generating JWT secrets
 ├── project_structure.txt   # Project structure documentation

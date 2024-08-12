@@ -3,14 +3,17 @@ info:
   title: Scissor API
   description: API for the URL shortening service
   version: 1.0.0
+
 servers:
-  - url: http://localhost:5003
+  - url: http://localhost:3001
     description: Local development server
 
 paths:
   /api/urls/shorten:
     post:
       summary: Shorten a URL
+      tags:
+        - URLs
       requestBody:
         required: true
         content:
@@ -26,16 +29,27 @@ paths:
                 $ref: '#/components/schemas/ShortenUrlResponse'
         '400':
           description: Invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         '500':
           description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 
   /api/urls/analytics/{shortUrl}:
     get:
       summary: Get analytics for a shortened URL
+      tags:
+        - Analytics
       parameters:
         - name: shortUrl
           in: path
           required: true
+          description: The shortened URL to retrieve analytics for
           schema:
             type: string
       responses:
@@ -47,12 +61,24 @@ paths:
                 $ref: '#/components/schemas/AnalyticsResponse'
         '404':
           description: URL not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         '500':
           description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 
   /api/urls/history:
     get:
       summary: Get URL history for the authenticated user
+      tags:
+        - History
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: List of URLs
@@ -64,10 +90,24 @@ paths:
                   $ref: '#/components/schemas/HistoryItem'
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         '500':
           description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
   schemas:
     ShortenUrlRequest:
       type: object
@@ -75,8 +115,10 @@ components:
         originalUrl:
           type: string
           format: uri
+          description: The original URL to shorten
         customUrl:
           type: string
+          description: Optional custom short URL
       required:
         - originalUrl
 
@@ -85,23 +127,37 @@ components:
       properties:
         shortUrl:
           type: string
+          description: The shortened URL
         qrCodeUrl:
           type: string
+          description: The URL to the generated QR code
 
     AnalyticsResponse:
       type: object
       properties:
         clicks:
           type: integer
+          description: Number of clicks on the shortened URL
         originalUrl:
           type: string
+          description: The original long URL
 
     HistoryItem:
       type: object
       properties:
         originalUrl:
           type: string
+          description: The original long URL
         shortUrl:
           type: string
+          description: The shortened URL
         qrCodeUrl:
           type: string
+          description: The URL to the generated QR code
+
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message describing the issue
