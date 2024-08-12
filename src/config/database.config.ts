@@ -1,5 +1,5 @@
-import { ConfigService } from '@nestjs/config';
-
-export default (configService: ConfigService) => ({
-  uri: configService.get<string>('MONGODB_URI'),
+export default () => ({
+  database: {
+    uri: process.env.MONGODB_URI,
+  },
 });
