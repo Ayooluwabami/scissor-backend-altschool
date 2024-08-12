@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../../src/app';
+import app from '../../app';
 import mongoose from 'mongoose';
 
 // Mock the cache functions
@@ -9,7 +9,7 @@ jest.mock('../../src/utils/cache', () => ({
 }));
 
 beforeAll(async () => {
-  await mongoose.connect(process.env.MONGODB_URI!, { useNewUrlParser: true, useUnifiedTopology: true });
+  await mongoose.connect(process.env.MONGODB_URI!);
 });
 
 afterAll(async () => {

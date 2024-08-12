@@ -19,8 +19,6 @@ scissor/
 │   │   ├── jwt.ts
 │   │   ├── rateLimiter.ts
 │   │   ├── validateUrl.ts
-│   ├── app.ts              # Main Express app
-│   ├── server.ts           # Server entry point
 ├── types/                  # Type declarations
 │   ├── express.d.ts
 ├── tests/                  # Test files
@@ -28,6 +26,8 @@ scissor/
 │   │   ├── url.controller.test.ts
 │   ├── integration/        # Integration tests
 │   │   ├── url.routes.test.ts
+├── app.ts              # Main Express app
+├── index.ts           # Server entry point
 ├── .env                    # Environment variables
 ├── .gitignore              # Git ignore file
 ├── jest.config.js          # Jest configuration
