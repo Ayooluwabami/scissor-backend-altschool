@@ -1,12 +1,12 @@
 scissor/
-├── dist/                   # Compiled output (if any)
+├── dist/                   # Compiled output 
 ├── node_modules/           # Node.js modules
 ├── src/                    # Source files
 │   ├── controllers/        # Controller files
 │   │   ├── url.controller.ts
 │   ├── middleware/         # Middleware files
 │   │   ├── authenticate.ts
-│   │   ├── authMiddleware.ts
+│   │   ├── rateLimiter.ts
 │   ├── models/             # Mongoose models
 │   │   ├── url.model.ts
 │   ├── routes/             # Route definitions
@@ -18,7 +18,6 @@ scissor/
 │   │   ├── database.ts
 │   │   ├── jwt.ts
 │   │   ├── rateLimiter.ts
-│   │   ├── redis.ts
 │   │   ├── validateUrl.ts
 │   ├── app.ts              # Main Express app
 │   ├── server.ts           # Server entry point
@@ -36,4 +35,7 @@ scissor/
 ├── package.json            # Package configuration
 ├── package-lock.json       # Lock file for package dependencies
 ├── tsconfig.json           # TypeScript configuration
+├── vercel.json             # Vercel deployment configuration
+├── README.md               # Project documentation
+├── generateJwtSecret.js    # Script for generating JWT secrets
 ├── project_structure.txt   # Project structure documentation
