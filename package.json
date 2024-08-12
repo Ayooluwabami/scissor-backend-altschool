@@ -2,7 +2,7 @@
   "name": "scissor",
   "version": "1.0.0",
   "description": "A URL shortening service",
-  "main": "index.js",
+  "main": "main.ts",
   "directories": {
     "test": "tests"
   },
