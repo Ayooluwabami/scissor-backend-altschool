@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UrlModule } from './modules/url/url.module';
@@ -7,6 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
 import { APP_INTERCEPTOR } from '@nestjs/core';
+import { RateLimiterMiddleware } from './common/middleware/rate-limiter.middleware';
 
 @Module({
   imports: [
@@ -32,4 +33,10 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     },
   ],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(RateLimiterMiddleware)
+      .forRoutes({ path: '*', method: RequestMethod.ALL });
+  }
+}

@@ -1,20 +1,14 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es2018",
+    "target": "es6",
     "strict": true,
-    "baseUrl": "./",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
     "rootDir": "./src",
-    "sourceMap": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "incremental": true,
-    "types": ["node", "jest"]
+    "outDir": "./dist"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
